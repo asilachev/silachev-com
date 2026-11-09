@@ -1,0 +1,33 @@
+#!/bin/sh
+# Commit messages in this repository (AGENTS.md, "Commits"):
+#   1. AI agents are not co-authors: their Co-authored-by trailers, "Generated with ..." lines
+#      and session links are removed from the message.
+#   2. The subject follows Conventional Commits: type(scope)!: summary
+# Turn it on once per clone: git config core.hooksPath .githooks
+
+msg="$1"
+tmp="$msg.agents"
+
+awk '
+  { line = tolower($0) }
+  line ~ /^co-authored-by:/ && line ~ /(anthropic|claude|openai|chatgpt|codex|copilot|cursor|devin|gemini|aider|\[bot\])/ { removed = 1; next }
+  line ~ /^claude-session:/ { removed = 1; next }
+  line ~ /generated (with|by) .*(claude|chatgpt|codex|copilot|cursor|devin|gemini|aider)/ { removed = 1; next }
+  /^[[:space:]]*$/ { blank++; next }
+  { for (i = 0; i < blank; i++) print ""; blank = 0; print }
+  END { if (removed) print "commit-msg: removed AI agent co-author lines; agents are not co-authors here" > "/dev/stderr" }
+' "$msg" > "$tmp" && mv "$tmp" "$msg"
+
+subject=$(grep -v '^#' "$msg" | sed -n '/[^[:space:]]/{p;q;}')
+
+case "$subject" in
+  "Merge "* | "Revert "* | "fixup! "* | "squash! "* | "amend! "*) exit 0 ;;
+esac
+
+types='feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert'
+if ! printf '%s\n' "$subject" | grep -Eq "^($types)(\([a-z0-9._/-]+\))?!?: [^ ]"; then
+  echo "commit-msg: the subject must be a Conventional Commit, e.g. \"feat: add a project\"" >&2
+  echo "  types: $(printf '%s' "$types" | tr '|' ' ')" >&2
+  echo "  got:   $subject" >&2
+  exit 1
+fi

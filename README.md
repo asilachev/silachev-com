@@ -5,8 +5,9 @@ The source of [silachev.com](https://silachev.com/), my personal site.
 ## How it's made
 
 One static page, [`site/index.html`](site/index.html) and [`site/styles.css`](site/styles.css), with
-Source Serif 4 and the icons served from `site/`. No framework, no build step, no JavaScript and no
-analytics.
+Source Serif 4 and the icons served from `site/`. No framework, no build step and no analytics. The
+only script, [`site/email.js`](site/email.js), puts the email address together when someone points
+at the link, so it isn't in the page for crawlers.
 
 A push to `master` that touches `site/` deploys it to GitHub Pages
 ([`pages.yml`](.github/workflows/pages.yml)).

@@ -1,15 +1,6 @@
 # silachev.com
 
-The source of [silachev.com](https://silachev.com/), my personal site. I write software at
-[Valur](https://valur.com/), and in my spare time I make small, careful tools for board games and
-notes:
-
-- [Thanos Automa](https://thanos.silachev.com/): play Splendor Marvel solo against the fan-made
-  Thanos automa.
-- [Board Generator for CATAN](https://catan.silachev.com/): fair, shareable boards for the base game
-  and all nine Seafarers scenarios.
-- [Nord Lane](https://asilachev.github.io/nord-lane-obsidian/): a calm, wide Obsidian theme on the
-  Nord palette.
+The source of [silachev.com](https://silachev.com/), my personal site.
 
 ## How it's made
 

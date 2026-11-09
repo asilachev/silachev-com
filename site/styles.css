@@ -176,14 +176,11 @@ a:focus-visible {
 
 .contacts a {
   font-weight: 600;
+  color: var(--link);
 }
 
 .contacts .key {
   color: var(--key);
-}
-
-.contacts .code {
-  color: var(--link);
 }
 
 .contacts a:hover,

@@ -5,8 +5,8 @@ The source of [silachev.com](https://silachev.com/), my personal site.
 ## How it's made
 
 One static page, [`site/index.html`](site/index.html) and [`site/styles.css`](site/styles.css), with
-IBM Plex and the projects' icons served from `site/`. No framework, no build step, no JavaScript and
-no analytics.
+Source Serif 4 and the icons served from `site/`. No framework, no build step, no JavaScript and no
+analytics.
 
 A push to `master` that touches `site/` deploys it to GitHub Pages
 ([`pages.yml`](.github/workflows/pages.yml)).
@@ -31,5 +31,6 @@ git config core.hooksPath .githooks
 
 ## License
 
-The code is [MIT](LICENSE). IBM Plex is under the SIL Open Font License 1.1
-([`site/fonts/OFL.txt`](site/fonts/OFL.txt)). The icons belong to their projects.
+The code is [MIT](LICENSE). Source Serif 4 is under the SIL Open Font License 1.1
+([`site/fonts/LICENSE-source-serif-4.md`](site/fonts/LICENSE-source-serif-4.md)). The icons belong to
+their projects and to Valur.

@@ -4,17 +4,18 @@ Guidance for AI coding agents, and for humans, working in this repository.
 
 ## What this is
 
-The source of [silachev.com](https://silachev.com/), Alex Silachev's personal site: one static page
-with a short intro and an index of side projects. The design is frame "03 — Index" in the Pencil
-file `silachev-com.pen`, in the owner's pen.dev workspace.
+The source of [silachev.com](https://silachev.com/), Alex Silachev's personal site: one static page,
+a short letter whose links lead to his work and side projects. The design is the frames
+"02 — One paragraph (letter)" and "02 — One paragraph · Phone (390)" in the Pencil file
+`silachev-com.pen`, in the owner's pen.dev workspace.
 
 ## Layout
 
 | Path | Contains |
 | --- | --- |
-| `site/index.html` | The page. Each project is one `<li class="row">` in the index |
-| `site/styles.css` | Type, colors and the index grid: a table from 1200 px, a side column below that, stacked under 760 px |
-| `site/fonts/` | IBM Plex Sans, Serif and Mono, Latin subset, under the OFL (`OFL.txt`) |
+| `site/index.html` | The page: two paragraphs. Each project is one link with its icon inside the first |
+| `site/styles.css` | Type and colors. The letter is 44 px on desktop and scales down to about 25 px on a phone |
+| `site/fonts/` | Source Serif 4, Latin subset, under the OFL (`LICENSE-source-serif-4.md`) |
 | `site/icons/` | Each project's own icon, copied from its repository |
 | `.github/workflows/pages.yml` | Deploys `site/` to GitHub Pages on a push to `master` |
 | `.githooks/commit-msg` | Checks commit messages (see Commits) |
@@ -23,10 +24,10 @@ file `silachev-com.pen`, in the owner's pen.dev workspace.
 
 - **Static and small.** No framework, no build step, no JavaScript, no analytics, no third-party
   requests. Fonts and icons are served from `site/`.
-- **Same as the design.** Copy, spacing and colors follow frame 03. A visual change here is mirrored
-  there.
-- **Readable.** Text on white meets WCAG AA: the grey is `#767676`, not lighter. Links stay
-  distinguishable without color.
+- **Same as the design.** Copy, spacing and colors follow frame 02. A visual change here is mirrored
+  there, including where the browser wraps the lines at 1440 and 390 px.
+- **Readable.** Text on the paper (`#fbf9f4`) meets WCAG AA; a grey added later must be `#6f6a61` or
+  darker. Links stay distinguishable without color: they are underlined.
 - **Check three widths** before calling a change done: 1440, 1000 and 390 px, with no sideways
   scroll.
 

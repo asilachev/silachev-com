@@ -4,20 +4,20 @@ Guidance for AI coding agents, and for humans, working in this repository.
 
 ## What this is
 
-The source of [silachev.com](https://silachev.com/), Alex Silachev's personal site: one static page,
-a short letter whose links lead to his work and side projects. The design is the frames
-"02 — One paragraph (letter)" and "02 — One paragraph · Phone (390)" in the Pencil file
+The source of [silachev.com](https://silachev.com/), Alex Silachev's personal site: one static page
+with his name, a two-sentence intro that links to his work at Valur, and a shelf of his side
+projects. The design is the frames "02 — Shelf" and "02 — Shelf · Phone (390)" in the Pencil file
 `silachev-com.pen`, in the owner's pen.dev workspace.
 
 ## Layout
 
 | Path | Contains |
 | --- | --- |
-| `site/index.html` | The page: two paragraphs. Each project is one link with its icon inside the first |
-| `site/styles.css` | Type and colors. The letter is 44 px on desktop and scales down to about 25 px on a phone |
+| `site/index.html` | The page: the name, the intro, the shelf (one list item per project: its icon and name in one link, then a line about it) and the contact line |
+| `site/styles.css` | Type, colors and layout. Each size is the phone frame's at 390 px and the desktop frame's at 1440 px, linear in between. The shelf has two columns, and four from 1150 px |
 | `site/fonts/` | Source Serif 4, Latin subset, under the OFL (`LICENSE-source-serif-4.md`) |
 | `site/email.js` | The page's only script: it gives the "Email me" link its `mailto:` address when someone points at, focuses or taps it |
-| `site/icons/` | Each project's own icon, copied from its repository, and Valur's mark from valur.com |
+| `site/icons/` | Each project's own icon, copied from its repository, and Valur's gradient mark (`valur.svg`, traced from the owner's image) |
 | `.github/workflows/pages.yml` | Deploys `site/` to GitHub Pages on a push to `master` |
 | `.githooks/commit-msg` | Checks commit messages (see Commits) |
 

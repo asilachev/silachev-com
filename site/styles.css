@@ -1,4 +1,5 @@
-/* silachev.com. The design is frame "02 — One paragraph (letter)" in the Pencil file silachev-com.pen. */
+/* silachev.com. The design is the frames "02 — Shelf" (1440) and "02 — Shelf · Phone (390)" in the
+   Pencil file silachev-com.pen. */
 
 @font-face {
   font-family: "Source Serif 4";
@@ -11,13 +12,27 @@
 :root {
   --paper: #fbf9f4;
   --ink: #161616;
+  --grey: #6f6a61;
   --link: #065580;
   --link-line: rgba(6, 85, 128, 0.22);
   --hover: #e20016;
 
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
 
-  --size: clamp(24px, 1rem + 2.2vw, 44px); /* 44 px on desktop, about 25 px on a phone */
+  /* Each size is the phone frame's at 390 px and the desktop frame's at 1440 px, linear in between. */
+  --name: clamp(32px, 27.5429px + 1.1429vw, 44px);
+  --intro: clamp(19px, 16.4px + 0.6667vw, 26px);
+  --title: clamp(18px, 16.5143px + 0.381vw, 22px);
+  --note: clamp(14px, 13.2571px + 0.1905vw, 16px);
+  --contact: clamp(19px, 17.8857px + 0.2858vw, 22px);
+  --icon: clamp(72px, 66.0571px + 1.5239vw, 88px);
+  --card: clamp(156px, 145.6px + 2.6667vw, 184px);
+  --gap: clamp(30px, 20.3429px + 2.4762vw, 56px);
+  --after-name: clamp(8px, 7.2571px + 0.1905vw, 10px);
+  --after-intro: clamp(44px, 33.6px + 2.6667vw, 72px);
+  --after-shelf: clamp(48px, 36.1143px + 3.0477vw, 80px);
+  --icon-gap: clamp(12px, 10.5143px + 0.381vw, 16px);
+
   --side: clamp(24px, 18vw - 60px, 200px);
   --top: clamp(64px, 11.7vw, 168px);
 }
@@ -37,20 +52,11 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.3;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
 }
 
 .page {
@@ -59,58 +65,102 @@ body {
   padding: var(--top) var(--side);
 }
 
-/* The letter: one paragraph, links underlined below the descenders */
+/* Links: underlined below the descenders, so they read as links without the color */
 
-.letter {
-  max-width: 21em;
-  font: 400 var(--size) / 1.3 var(--serif);
-}
-
-.letter p {
-  margin: 0;
-  text-wrap: pretty;
-}
-
-.letter p + p {
-  margin-top: 1em;
-}
-
-.letter a {
+a {
   color: var(--link);
   text-decoration: none;
 }
 
-.letter a .text {
-  border-bottom: 2px solid var(--link-line);
+a .text {
+  border-bottom: 1.5px solid var(--link-line);
 }
 
-.letter a:hover {
+a:hover {
   color: var(--hover);
 }
 
-.letter a:hover .text {
+a:hover .text {
   border-bottom-color: color-mix(in srgb, var(--hover) 35%, transparent);
 }
 
-.letter a:focus-visible {
+a:focus-visible {
   outline: 2px solid var(--link);
   outline-offset: 4px;
   border-radius: 3px;
 }
 
-.project {
+/* The name and the intro */
+
+.name {
+  margin: 0;
+  font-size: var(--name);
+  font-weight: 400;
+}
+
+.intro {
+  max-width: 28.5em;
+  margin: var(--after-name) 0 0;
+  font-size: var(--intro);
+  color: var(--grey);
+  text-wrap: balance; /* phone: five even lines, the first sentence ending a line */
+}
+
+@media (min-width: 760px) {
+  .intro {
+    text-wrap: pretty; /* desktop: three lines */
+  }
+}
+
+.inline {
   white-space: nowrap;
 }
 
-.project img {
+.inline img {
   width: 0.82em;
   height: 0.82em;
   margin: 0 0.27em 0 0.05em;
   vertical-align: -0.1em;
 }
 
-@media (max-width: 759px) {
-  .letter a .text {
-    border-bottom-width: 1.5px;
+/* The shelf: two columns, and four once they fit */
+
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, var(--card)));
+  gap: 36px var(--gap);
+  margin: var(--after-intro) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 1150px) {
+  .shelf {
+    grid-template-columns: repeat(4, minmax(0, var(--card)));
   }
+}
+
+.shelf a {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--icon-gap);
+  font-size: var(--title);
+}
+
+.shelf img {
+  display: block;
+  width: var(--icon);
+  height: var(--icon);
+}
+
+.shelf p {
+  margin: 3px 0 0;
+  font-size: var(--note);
+  color: var(--grey);
+}
+
+.contact {
+  margin: var(--after-shelf) 0 0;
+  font-size: var(--contact);
 }

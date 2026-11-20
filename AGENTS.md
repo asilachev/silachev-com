@@ -17,7 +17,7 @@ projects. The design is the frames "02 — Shelf" and "02 — Shelf · Phone (39
 | `site/styles.css` | Type, colors and layout. Each size is the phone frame's at 390 px and the desktop frame's at 1440 px, linear in between. The shelf has two columns, and four from 1150 px |
 | `site/fonts/` | Source Serif 4, Latin subset, under the OFL (`LICENSE-source-serif-4.md`) |
 | `site/email.js` | The page's only script: it gives the "Email me" link its `mailto:` address when someone points at, focuses or taps it |
-| `site/icons/` | Each project's own icon, copied from its repository, and Valur's gradient mark (`valur.svg`, traced from the owner's image) |
+| `site/icons/` | Each project's own icon, copied from its repository, and Valur's gradient mark (`valur.svg`, traced from the owner's image). Use the full icon, not the favicon: the shelf shows them at 72–88 px, where a favicon's simplifications show |
 | `.github/workflows/pages.yml` | Deploys `site/` to GitHub Pages on a push to `master` |
 | `.githooks/commit-msg` | Checks commit messages (see Commits) |
 
